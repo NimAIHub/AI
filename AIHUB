@@ -1,3 +1,7 @@
+if game.CoreGui:FindFirstChild("ai") then
+      game:CoreGui:FindFirstChild("ai"):Destroy()
+end
+
 local Terminal = {}
 
 local input = game:GetService("UserInputService")
