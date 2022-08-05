@@ -72,7 +72,7 @@ function Terminal:BootWindow(ginfo)
 		Terminal:DraggingEnabled(top, panel)
 		
 	ai.Name = "ai"
-	ai.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	ai.Parent = game.CoreGui
 	ai.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ai.DisplayOrder = 999999999
 	ai.ResetOnSpawn = false
