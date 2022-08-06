@@ -68,11 +68,11 @@ function Terminal:BootWindow(ginfo)
 	local idkbro = Instance.new("TextLabel")
 	local titlewelc = Instance.new("TextLabel")
 	local username = Instance.new("TextLabel")
-	
-		Terminal:DraggingEnabled(top, panel)
-		
+
+	Terminal:DraggingEnabled(top, panel)
+
 	ai.Name = "ai"
-	ai.Parent = game.CoreGui
+	ai.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ai.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ai.DisplayOrder = 999999999
 	ai.ResetOnSpawn = false
@@ -99,7 +99,7 @@ function Terminal:BootWindow(ginfo)
 	topcover.Position = UDim2.new(0, 0, 0.800000012, 0)
 	topcover.Size = UDim2.new(0, 606, 0, 5)
 	topcover.ZIndex = 3
-	
+
 	Wlc.Name = "Wlc"
 	Wlc.Parent = panel
 	Wlc.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
@@ -253,17 +253,17 @@ function Terminal:BootWindow(ginfo)
 	tabsList.Parent = tabs
 	tabsList.SortOrder = Enum.SortOrder.LayoutOrder
 	tabsList.Padding = UDim.new(0, 4)
-	
+
 	divider.Name = "divider"
 	divider.Parent = panel
 	divider.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
 	divider.BorderSizePixel = 0
 	divider.Position = UDim2.new(0.234323427, 0, 0.0663129985, 0)
 	divider.Size = UDim2.new(0, 1, 0, 352)
-	
+
 	archives.Name = "archives"
 	archives.Parent = pageframe
-	
+
 	tabframepadding.Name = "tabframepadding"
 	tabframepadding.Parent = tabframe
 	tabframepadding.PaddingLeft = UDim.new(0, 5)
@@ -283,9 +283,9 @@ function Terminal:BootWindow(ginfo)
 	pagecvr.BorderSizePixel = 0
 	pagecvr.Position = UDim2.new(-0.000654041767, 0, 0.985994399, 0)
 	pagecvr.Size = UDim2.new(0, 5, 0, 5)
-	
+
 	local tabhandle = {}
-	
+
 	function tabhandle:AddTab(tabinfo)
 		local tabbtn = Instance.new("TextButton")
 		local tabbtncorner = Instance.new("UICorner")
@@ -297,10 +297,10 @@ function Terminal:BootWindow(ginfo)
 		local searchbox = Instance.new("TextBox")
 		local pagelist = Instance.new("UIListLayout")
 		local pagepadding = Instance.new("UIPadding")
-		
-		
+
+
 		tabinfo = tabinfo or tabbtn.TextTransparency == 0
-		
+
 		tabbtn.Name = "tabbtn"
 		tabbtn.Parent = tabs
 		tabbtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
@@ -408,7 +408,7 @@ function Terminal:BootWindow(ginfo)
 		searchbox.TextSize = 12.000
 		searchbox.TextWrapped = true
 		searchbox.TextXAlignment = Enum.TextXAlignment.Left
-		
+
 		local scrollingframe = page
 		local searchbar = searchbox
 
@@ -420,26 +420,26 @@ function Terminal:BootWindow(ginfo)
 		pagepadding.Name = "pagepadding"
 		pagepadding.Parent = page
 		pagepadding.PaddingLeft = UDim.new(0, 4)
-		
+
 		local element = {}
-		
+
 		function element:AddButton(btninfo, callback)
 			btninfo = btninfo or "BUTTON"
 			callback = callback or function() end
-			
+
 			local cmdbtn = Instance.new("TextButton")
 			local cmdbtncorner = Instance.new("UICorner")
 			local cmdinfo = Instance.new("TextLabel")
 			local arrow = Instance.new("ImageLabel")
-			
-                        arrow.Name = "arrow"
-                        arrow.Parent = cmdbtn
-                        arrow.BackgroundTransparency = 1.000
-                        arrow.BorderSizePixel = 0
-                        arrow.Position = UDim2.new(1.01650953, 0, 0.200000003, 0)
-                        arrow.Size = UDim2.new(0, 20, 0, 20)
-                        arrow.Image = "http://www.roblox.com/asset/?id=6034818375"
-                        arrow.ImageColor3 = Color3.fromRGB(50, 50, 50)
+
+			arrow.Name = "arrow"
+			arrow.Parent = cmdbtn
+			arrow.BackgroundTransparency = 1.000
+			arrow.BorderSizePixel = 0
+			arrow.Position = UDim2.new(1.01650953, 0, 0.200000003, 0)
+			arrow.Size = UDim2.new(0, 20, 0, 20)
+			arrow.Image = "http://www.roblox.com/asset/?id=6034818375"
+			arrow.ImageColor3 = Color3.fromRGB(50, 50, 50)
 
 			cmdbtn.Name = "cmdbtn"..btninfo
 			cmdbtn.Parent = page
@@ -453,17 +453,17 @@ function Terminal:BootWindow(ginfo)
 			cmdbtn.TextSize = 14.000
 			cmdbtn.TextTransparency = 1.000
 			cmdbtn.MouseEnter:Connect(function()
-			        arrow:TweenPosition(UDim2.new(1.002, 0,0.2, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
+				arrow:TweenPosition(UDim2.new(1.002, 0,0.2, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
 				cmdinfo:TweenPosition(UDim2.new(0.039, 0,0.174, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
 				game.TweenService:Create(cmdbtn, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(56, 56, 56)}):Play()
 			end)
 
 			cmdbtn.MouseLeave:Connect(function()
-			        arrow:TweenPosition(UDim2.new(1.017, 0,0.2, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
+				arrow:TweenPosition(UDim2.new(1.017, 0,0.2, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
 				cmdinfo:TweenPosition(UDim2.new(0.022, 0,0.174, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
 				game.TweenService:Create(cmdbtn, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(34, 34, 34)}):Play()
 			end)
-			
+
 			cmdbtn.MouseButton1Click:Connect(function()
 				callback()
 			end)
@@ -484,18 +484,28 @@ function Terminal:BootWindow(ginfo)
 			cmdinfo.TextSize = 13.000
 			cmdinfo.TextXAlignment = Enum.TextXAlignment.Left
 		end
-		
+
 		function element:AddToggle(tginfo, callback)
 			tginfo = tginfo or "Toggle"
 			callback = callback or function() end
-			
+
 			local togbtn = Instance.new("TextButton")
 			local togbtncorner = Instance.new("UICorner")
 			local toginfo = Instance.new("TextLabel")
 			local toggle = Instance.new("Frame")
 			local toggleicon = Instance.new("ImageLabel")
 			local togstroke = Instance.new("UIStroke")
+			local togarrow = Instance.new("ImageLabel")
 			
+			togarrow.Name = "arrow"
+			togarrow.Parent = togbtn
+			togarrow.BackgroundTransparency = 1.000
+			togarrow.BorderSizePixel = 0
+			togarrow.Position = UDim2.new(1.01650953, 0, 0.200000003, 0)
+			togarrow.Size = UDim2.new(0, 20, 0, 20)
+			togarrow.Image = "http://www.roblox.com/asset/?id=6034818375"
+			togarrow.ImageColor3 = Color3.fromRGB(50, 50, 50)
+
 			togbtn.Name = "togbtn"..tginfo
 			togbtn.Parent = page
 			togbtn.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -509,11 +519,13 @@ function Terminal:BootWindow(ginfo)
 			togbtn.TextSize = 14.000
 			togbtn.TextTransparency = 1.000
 			togbtn.MouseEnter:Connect(function()
+				togarrow:TweenPosition(UDim2.new(1.002, 0,0.2, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
 				toginfo:TweenPosition(UDim2.new(0.039, 0,0.211, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
 				game.TweenService:Create(togbtn, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(56, 56, 56)}):Play()
 			end)
 
 			togbtn.MouseLeave:Connect(function()
+				togarrow:TweenPosition(UDim2.new(1.017, 0,0.2, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
 				toginfo:TweenPosition(UDim2.new(0.025, 0,0.211, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.2, true)
 				game.TweenService:Create(togbtn, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(34, 34, 34)}):Play()
 			end)
@@ -521,7 +533,7 @@ function Terminal:BootWindow(ginfo)
 			togbtncorner.CornerRadius = UDim.new(0, 3)
 			togbtncorner.Name = "togbtncorner"
 			togbtncorner.Parent = togbtn
-			
+
 			togstroke.Name = "togstroke"
 			togstroke.Parent = toggle
 			togstroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
@@ -561,13 +573,13 @@ function Terminal:BootWindow(ginfo)
 				tog = not tog
 				callback(tog) 
 				if tog then 
-						game:GetService("TweenService"):Create(toggle,TweenInfo.new(0.1),{BackgroundTransparency=0}):Play()
-					        toggleicon:TweenSize(UDim2.new(0,19,0,19), Enum.EasingDirection.Out, Enum.EasingStyle.Quart,0.1,true)
-					        task.wait(0.1)
-						toggleicon:TweenSize(UDim2.new(0,14,0,14), Enum.EasingDirection.Out, Enum.EasingStyle.Quart,0.1,true)
+					game:GetService("TweenService"):Create(toggle,TweenInfo.new(0.1),{BackgroundTransparency=0}):Play()
+					toggleicon:TweenSize(UDim2.new(0,19,0,19), Enum.EasingDirection.Out, Enum.EasingStyle.Quart,0.1,true)
+					task.wait(0.1)
+					toggleicon:TweenSize(UDim2.new(0,14,0,14), Enum.EasingDirection.Out, Enum.EasingStyle.Quart,0.1,true)
 				else
 					game:GetService("TweenService"):Create(toggle,TweenInfo.new(0.1),{BackgroundTransparency=1}):Play()
-						toggleicon:TweenSize(UDim2.new(0,0,0,0), Enum.EasingDirection.In, Enum.EasingStyle.Quart,0.1,true)
+					toggleicon:TweenSize(UDim2.new(0,0,0,0), Enum.EasingDirection.In, Enum.EasingStyle.Quart,0.1,true)
 				end
 			end)
 		end
