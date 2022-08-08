@@ -72,7 +72,7 @@ function Terminal:BootWindow(ginfo)
 	Terminal:DraggingEnabled(top, panel)
 
 	ai.Name = "ai"
-	ai.Parent = game.CoreGui
+	ai.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ai.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ai.DisplayOrder = 999999999
 	ai.ResetOnSpawn = false
@@ -569,9 +569,8 @@ function Terminal:BootWindow(ginfo)
 			toggleicon.Image = "http://www.roblox.com/asset/?id=6031094667"
 			local tog = false
 
-			togbtn.MouseButton1Click:Connect(function()
+			togbtn.MouseButton1Down:Connect(function()
 				tog = not tog
-				callback(tog) 
 				if tog then 
 					game:GetService("TweenService"):Create(toggle,TweenInfo.new(0.1),{BackgroundTransparency=0}):Play()
 					toggleicon:TweenSize(UDim2.new(0,19,0,19), Enum.EasingDirection.Out, Enum.EasingStyle.Quart,0.1,true)
@@ -581,6 +580,7 @@ function Terminal:BootWindow(ginfo)
 					game:GetService("TweenService"):Create(toggle,TweenInfo.new(0.1),{BackgroundTransparency=1}):Play()
 					toggleicon:TweenSize(UDim2.new(0,0,0,0), Enum.EasingDirection.In, Enum.EasingStyle.Quart,0.1,true)
 				end
+				pcall(callback,tog)
 			end)
 		end
 		return element
@@ -588,3 +588,11 @@ function Terminal:BootWindow(ginfo)
 	return tabhandle
 end
 return Terminal
+
+				--[[]game:GetService("TweenService"):Create(toggle,TweenInfo.new(0.1),{BackgroundTransparency=0}):Play()
+					toggleicon:TweenSize(UDim2.new(0,19,0,19), Enum.EasingDirection.Out, Enum.EasingStyle.Quart,0.1,true)
+					task.wait(0.1)
+					toggleicon:TweenSize(UDim2.new(0,14,0,14), Enum.EasingDirection.Out, Enum.EasingStyle.Quart,0.1,true)
+				else
+					game:GetService("TweenService"):Create(toggle,TweenInfo.new(0.1),{BackgroundTransparency=1}):Play()
+					toggleicon:TweenSize(UDim2.new(0,0,0,0), Enum.EasingDirection.In, Enum.EasingStyle.Quart,0.1,true) -- ]]
