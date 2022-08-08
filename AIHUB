@@ -538,7 +538,7 @@ function Terminal:BootWindow(ginfo)
 			togstroke.Parent = toggle
 			togstroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 			togstroke.Color = Color3.fromRGB(65, 65, 65)
-			togstroke.Thickness = 2
+			togstroke.Thickness = 1
 
 			toginfo.Name = "toginfo"
 			toginfo.Parent = togbtn
